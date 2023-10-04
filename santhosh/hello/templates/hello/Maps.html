@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+        body {
+            background-image: url('Map1.jpg');
+            height: 600px;
+            padding-top: 160px;
+            padding-left: 450px;
+            background-repeat: no-repeat;
+            background-position: center;
+            background-size:1400px, 1200px;
+        }
+    </style>
+    <title></title>
+    <link rel="stylesheet" href= "https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha1/css/bootstrap.min.css" crossorigin="anonymous">
+    </head>
+    <body>
+    <div class="maps">
+    <div id="myDiv" style="padding-top: -70px; width: 590px;"><p style="padding-left: 100px; font-size:25px; color:black;"><b>My Current Location</b></p>
+    <meta charset="utf-8" />
+
+	<script type='text/javascript'>
+    function GetMap() 
+    {
+        var map = new Microsoft.Maps.Map('#myMap', {
+            credentials:'Ag_IjB489iBmjBhw7Jb789TFTkqDf2tvTS6HUEt5vG1GXcvP3HDUs2MwIh1CyVsG'
+        });
+
+        //Request the user's location
+        navigator.geolocation.getCurrentPosition(function (position) {
+            var loc = new Microsoft.Maps.Location(
+                position.coords.latitude,
+                position.coords.longitude);
+
+            //Add a pushpin at the user's location.
+            var pin = new Microsoft.Maps.Pushpin(loc);
+            map.entities.push(pin);
+
+            //Center the map on the user's location.
+            map.setView({ center: loc, zoom: 15 });
+        });
+    }
+    </script>
+    
+    <script type='text/javascript' src='http://www.bing.com/api/maps/mapcontrol?callback=GetMap' async defer>
+    </script>
+</head>
+</div>
+</div>
+
+    <div id="myMap" style="position:relative; width:400px; height:400px;"></div>
+</body>
+</html>
